@@ -59,7 +59,7 @@ use one of these paths:
 
 The generated image applies these defaults on first boot:
 
-- LAN IP: `192.168.3.249/24`
+- LAN IP: `192.168.3.252/24`
 - Gateway: `192.168.3.254`
 - DNS: `192.168.3.254`, `223.5.5.5`
 - SSH port: `9167`
