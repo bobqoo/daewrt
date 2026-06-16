@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_release:
-        description: Publish generated images to a GitHub release
+        description: 把生成的固件发布到 GitHub Release (Publish to release)
         required: true
         default: "false"
         type: choice
@@ -12,11 +12,11 @@ on:
           - "false"
           - "true"
       imagebuilder_url:
-        description: ImmortalWrt ImageBuilder URL
+        description: ImmortalWrt ImageBuilder 下载地址 (ImageBuilder URL)
         required: true
         default: "https://downloads.immortalwrt.org/releases/25.12-SNAPSHOT/targets/x86/64/immortalwrt-imagebuilder-25.12-SNAPSHOT-x86-64.Linux-x86_64.tar.zst"
       preflight:
-        description: Run package manifest preflight before building the image
+        description: 构建前检查包清单是否齐全 (preflight manifest check)
         required: true
         default: "true"
         type: choice
@@ -24,11 +24,11 @@ on:
           - "true"
           - "false"
       rootfs_partsize:
-        description: Root filesystem partition size in MB
+        description: 根文件系统分区大小 MB (rootfs partition size)
         required: true
         default: "1024"
       install_daede:
-        description: Bake luci-app-daede release APK into the image
+        description: 把 luci-app-daede 打进固件 (bake into image)
         required: true
         default: "true"
         type: choice
@@ -36,11 +36,11 @@ on:
           - "true"
           - "false"
       daede_release_tag:
-        description: luci-app-daede release tag, or latest
+        description: luci-app-daede 的 release tag，默认用最新 (release tag, or latest)
         required: true
         default: "latest"
       daede_apk_url:
-        description: Optional direct luci-app-daede APK URL override
+        description: 可选，直接指定一个 luci-app-daede APK 下载地址 (optional direct URL)
         required: false
         default: ""
 

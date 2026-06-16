@@ -5,7 +5,7 @@
 ## 中文
 
 构建一个 ImmortalWrt x86/64 测试固件，默认包含
-[`luci-app-daede`](https://github.com/kenzok8/luci-app-daede) 以及运行
+[`luci-app-daede`](https://github.com/kenzok8/openwrt-daede) 以及运行
 `dae` / `daed` 所需的基础依赖。
 
 ### 默认固件
@@ -17,12 +17,12 @@
 - ImageBuilder URL：
   `https://downloads.immortalwrt.org/releases/25.12-SNAPSHOT/targets/x86/64/immortalwrt-imagebuilder-25.12-SNAPSHOT-x86-64.Linux-x86_64.tar.zst`
 - luci-app-daede：
-  [`luci-app-daede`](https://github.com/kenzok8/luci-app-daede)
+  [`luci-app-daede`](https://github.com/kenzok8/openwrt-daede)
 
 ### 默认安装包
 
 工作流默认从
-[`kenzok8/luci-app-daede`](https://github.com/kenzok8/luci-app-daede) 的
+[`kenzok8/openwrt-daede`](https://github.com/kenzok8/openwrt-daede) 的
 GitHub Release 下载匹配架构的 `luci-app-daede-*-x86_64.apk`，放入
 ImageBuilder 本地包源，然后安装以下软件包：
 
@@ -103,7 +103,7 @@ workflow 会把生成的固件作为 artifact 上传。当 `publish_release` 设
 ## English
 
 Build an ImmortalWrt x86/64 KVM test image with
-[`luci-app-daede`](https://github.com/kenzok8/luci-app-daede) installed by
+[`luci-app-daede`](https://github.com/kenzok8/openwrt-daede) installed by
 default, plus the runtime dependencies needed by `dae` / `daed`.
 
 ### Default Image
@@ -115,12 +115,12 @@ default, plus the runtime dependencies needed by `dae` / `daed`.
 - ImageBuilder URL:
   `https://downloads.immortalwrt.org/releases/25.12-SNAPSHOT/targets/x86/64/immortalwrt-imagebuilder-25.12-SNAPSHOT-x86-64.Linux-x86_64.tar.zst`
 - Shortcut:
-  [`kenzok8/luci-app-daede`](https://github.com/kenzok8/luci-app-daede)
+  [`kenzok8/openwrt-daede`](https://github.com/kenzok8/openwrt-daede)
 
 ### Default Packages
 
 The workflow downloads the matching `luci-app-daede-*-x86_64.apk` from the
-[`kenzok8/luci-app-daede`](https://github.com/kenzok8/luci-app-daede) GitHub
+[`kenzok8/openwrt-daede`](https://github.com/kenzok8/openwrt-daede) GitHub
 Release, places it in ImageBuilder's local package directory, and installs these
 packages:
 
