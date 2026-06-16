@@ -86,9 +86,16 @@ install_daede_apk() {
   daede_url="$(resolve_daede_apk_url)"
   mkdir -p "$packages_dir"
 
-  echo "Downloading luci-app-daede APK: $daede_url"
+  # Strip the -<arch> suffix from the release filename. apk mkndx indexes the
+  # package under its canonical name-version.apk; if the file keeps the
+  # -x86_64 suffix the index entry points to a missing file and the build
+  # fails with "package mentioned in index not found".
+  local fname="${daede_url##*/}"
+  fname="${fname%-${DAEDE_ARCH}.apk}.apk"
+
+  echo "Downloading luci-app-daede APK: $daede_url -> $fname"
   curl -L --retry 8 --retry-delay 5 --connect-timeout 30 \
-    -o "$packages_dir/${daede_url##*/}" "$daede_url"
+    -o "$packages_dir/$fname" "$daede_url"
 }
 
 if [ ! -s "$IB_ARCHIVE" ]; then
