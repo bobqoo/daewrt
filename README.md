@@ -1,10 +1,10 @@
 # imagebuilder
 
-[中文](#中文) | [English](#english)
+[中文](#中文) | [英文](#english)
 
 ## 中文
 
-构建一个 ImmortalWrt x86/64 测试固件，默认包含
+构建一个 ImmortalWrt x86/64 KVM 测试固件，默认包含
 [`luci-app-daede`](https://github.com/kenzok8/openwrt-daede) 以及运行
 `dae` / `daed` 所需的基础依赖。
 
@@ -16,8 +16,8 @@
 - Rootfs 分区：`1024` MB
 - ImageBuilder URL：
   `https://downloads.immortalwrt.org/releases/25.12-SNAPSHOT/targets/x86/64/immortalwrt-imagebuilder-25.12-SNAPSHOT-x86-64.Linux-x86_64.tar.zst`
-- luci-app-daede：
-  [`luci-app-daede`](https://github.com/kenzok8/openwrt-daede)
+- 快捷链接：
+  [`kenzok8/openwrt-daede`](https://github.com/kenzok8/openwrt-daede)
 
 ### 默认安装包
 

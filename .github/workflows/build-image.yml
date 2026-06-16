@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_release:
-        description: 把生成的固件发布到 GitHub Release (Publish to release)
+        description: Publish generated images to a GitHub release
         required: true
         default: "false"
         type: choice
@@ -12,11 +12,11 @@ on:
           - "false"
           - "true"
       imagebuilder_url:
-        description: ImmortalWrt ImageBuilder 下载地址 (ImageBuilder URL)
+        description: ImmortalWrt ImageBuilder URL
         required: true
         default: "https://downloads.immortalwrt.org/releases/25.12-SNAPSHOT/targets/x86/64/immortalwrt-imagebuilder-25.12-SNAPSHOT-x86-64.Linux-x86_64.tar.zst"
       preflight:
-        description: 构建前检查包清单是否齐全 (preflight manifest check)
+        description: Run package manifest preflight before building the image
         required: true
         default: "true"
         type: choice
@@ -24,17 +24,26 @@ on:
           - "true"
           - "false"
       rootfs_partsize:
-        description: 根文件系统分区大小 MB (rootfs partition size)
+        description: Root filesystem partition size in MB
         required: true
         default: "1024"
       install_daede:
-        description: 把 luci-app-daede 打进固件 (bake into image)
+        description: Bake luci-app-daede release APK into the image
         required: true
         default: "true"
         type: choice
         options:
           - "true"
           - "false"
+      daede_release_tag:
+        description: luci-app-daede release tag, or latest
+        required: true
+        default: "latest"
+      daede_apk_url:
+        description: Optional direct luci-app-daede APK URL override
+        required: false
+        default: ""
+
 permissions:
   contents: write
 
@@ -77,6 +86,8 @@ jobs:
           PREFLIGHT: ${{ inputs.preflight }}
           ROOTFS_PARTSIZE: ${{ inputs.rootfs_partsize }}
           INSTALL_DAEDE: ${{ inputs.install_daede }}
+          DAEDE_RELEASE_TAG: ${{ inputs.daede_release_tag }}
+          DAEDE_APK_URL: ${{ inputs.daede_apk_url }}
           GITHUB_TOKEN: ${{ github.token }}
           OUT_DIR: ${{ github.workspace }}/out
         run: |
