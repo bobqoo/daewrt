@@ -32,7 +32,10 @@ setup_daede_feed() {
   # the ImageBuilder repositories lets `make manifest` and `make image` resolve
   # luci-app-daede normally, without touching the local packages/ directory.
   local sdk target_arch feed_url
-  sdk="$(echo "$IMAGEBUILDER_URL" | grep -oE '[0-9]+\.[0-9]+(-SNAPSHOT)?' | head -1)"
+  # strip trailing modifiers like "-SNAPSHOT" / "-rc3" — the feed dir uses
+  # the plain major.minor prefix (e.g. "25.12" not "25.12-SNAPSHOT").
+  sdk="$(echo "$IMAGEBUILDER_URL" | grep -oE '[0-9]+\.[0-9]+(-SNAPSHOT|-rc[0-9]+)?' | head -1)"
+  sdk="${sdk%%-*}"
   [ -n "$sdk" ] || sdk="25.12"
   target_arch="${DAEDE_ARCH:-x86_64}"
   feed_url="https://down.dllkids.xyz/openwrt-feed/${sdk}/${target_arch}"
