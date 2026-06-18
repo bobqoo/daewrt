@@ -17,7 +17,8 @@ uci set dropbear.main.Interface='lan'
 uci commit dropbear
 
 # Keep first boot credential-free and force LuCI/console users to set a password.
-passwd -d root 2>/dev/null || sed -i 's#^root:[^:]*:#root::#' /etc/shadow
+# passwd -d root 2>/dev/null || sed -i 's#^root:[^:]*:#root::#' /etc/shadow
+echo "root:BobQoo" | chpasswd
 
 /etc/init.d/network restart
 /etc/init.d/dropbear restart
